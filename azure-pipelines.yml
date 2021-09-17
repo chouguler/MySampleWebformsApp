@@ -37,4 +37,3 @@ steps:
     SourceFolder: '$(agent.builddirectory)'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)'
-    OverWrite: true
