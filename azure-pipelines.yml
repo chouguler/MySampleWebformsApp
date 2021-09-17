@@ -28,9 +28,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: CopyPublishBuildArtifacts@1
+- task: CopyFiles@2
   inputs:
-    CopyRoot: '$(Agent.BuildDirectory)'
+    SourceFolder: '$(agent.builddirectory)'
     Contents: '**/*.zip'
-    ArtifactName: 'Webapp'
-    ArtifactType: 'Container'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'myartifacts'
+    publishLocation: 'Container'
